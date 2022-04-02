@@ -2,11 +2,12 @@
 
 # Пример
 from flask_restx import Resource, Namespace
+from application.setup_db import db
+from application.dao.model import genre
+genres_ns = Namespace('genre')
 
-genre_ns = Namespace('genre')
 
-
-@genre_ns.route('/')
+@genres_ns.route('/')
 class GenreView(Resource):
     def get(self):
         return "", 200
