@@ -14,7 +14,7 @@ from application.setup_db import db
 
 movie_schema = MovieSchema()
 movies_dao = MoviesDAO(db.session)
-movies_services = BaseService(movies_dao, movie_schema)
+movies_services = MoviesService(movies_dao, movie_schema)
 
 director_schema = DirectorSchema()
 director_dao = DirectorsDAO(db.session)
@@ -22,4 +22,4 @@ director_services = BaseService(director_dao, director_schema)
 
 genre_schema = GenreSchema()
 genre_dao = GenresDAO(db.session)
-genre_services = MoviesService(genre_dao, genre_schema)
+genre_services = BaseService(genre_dao, genre_schema)

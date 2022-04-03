@@ -35,7 +35,7 @@ class MoviesDAO(BaseDAO):
         self.session.commit()
 
     def get_director_id(self, director_id: int):
-        self.session.query(Movie).filter(Movie.director_id == director_id)
+        self.session.query(Movie).filter(Movie.director_id == director_id).all()
 
     def get_genre_id(self, genre_id: int):
-        self.session.query(Movie).filter(Movie.genre_id == genre_id)
+        self.session.query(Movie).filter(Movie.genre_id == genre_id).all()
