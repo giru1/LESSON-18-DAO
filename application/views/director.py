@@ -5,8 +5,7 @@ from flask import request
 from flask_restx import Resource, Namespace
 
 from application.dao.model.director import DirectorSchema
-from application.setup_db import db
-from application.dao.model import director
+
 
 
 from application.container import director_services

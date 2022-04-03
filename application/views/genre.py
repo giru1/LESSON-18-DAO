@@ -1,16 +1,26 @@
 # здесь контроллеры/хендлеры/представления для обработки запросов (flask ручки). сюда импортируются сервисы из пакета service
 
 # Пример
+from flask import request
 from flask_restx import Resource, Namespace
-from application.setup_db import db
-from application.dao.model import genre
-genres_ns = Namespace('genre')
+
+from application.dao.model.genre import GenreSchema
+from application.container import genre_services
+
+genres_ns = Namespace('genres')
+genre_schema = GenreSchema()
 
 
 @genres_ns.route('/')
 class GenreView(Resource):
     def get(self):
-        return "", 200
+        return genre_services.get_all()
 
     def post(self):
-        return "", 201
+        return genre_services.create(request.json)
+
+
+@genres_ns.route('/<int:id>')
+class GenreView(Resource):
+    def get(self, id: int):
+        return genre_services.get_one(id)
